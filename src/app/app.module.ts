@@ -1,17 +1,17 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
-import {MatButtonModule} from "@angular/material/button";
-import {HomeComponent} from './home/home.component';
-import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
-import {HttpClientModule} from "@angular/common/http";
-import {HttpErrorHandler} from "./http-error-handler.service";
-import {MessageService} from "./message.service";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { HomeComponent } from './home/home.component';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpErrorHandler } from './http-error-handler.service';
+import { MessageService } from './message.service';
 
 const initializeKeycloak = (keycloak: KeycloakService) => {
   return () =>
@@ -19,21 +19,18 @@ const initializeKeycloak = (keycloak: KeycloakService) => {
       config: {
         url: 'http://localhost:8080',
         realm: 'AnteHub',
-        clientId: 'login-app'
+        clientId: 'login-app',
       },
       initOptions: {
         onLoad: 'check-sso',
         silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html'
-      }
+          window.location.origin + '/assets/silent-check-sso.html',
+      },
     });
-}
+};
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -42,7 +39,7 @@ const initializeKeycloak = (keycloak: KeycloakService) => {
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [
     HttpErrorHandler,
@@ -51,9 +48,9 @@ const initializeKeycloak = (keycloak: KeycloakService) => {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
       multi: true,
-      deps: [KeycloakService]
-    }],
-  bootstrap: [AppComponent]
+      deps: [KeycloakService],
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

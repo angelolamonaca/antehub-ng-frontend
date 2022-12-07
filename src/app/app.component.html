@@ -1,11 +1,14 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button aria-label="Icon-button with home icon">
+  <button aria-label="Icon-button with home icon" mat-icon-button>
     <mat-icon>home</mat-icon>
   </button>
   <span>AnteHub</span>
   <span class="spacer"></span>
-  <button mat-icon-button aria-label="Icon-button with login icon">
-    <mat-icon>login</mat-icon>
+  <button
+    (click)="isLoggedIn ? logout() : login()"
+    aria-label="Icon-button with login icon"
+    mat-icon-button>
+    <mat-icon>{{ isLoggedIn ? 'power_settings_new' : 'login' }}</mat-icon>
   </button>
 </mat-toolbar>
 <router-outlet></router-outlet>
