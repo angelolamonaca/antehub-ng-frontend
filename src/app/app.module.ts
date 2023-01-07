@@ -12,6 +12,8 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
+import { WelcomeComponent } from './home/welcome/welcome.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
 
 const initializeKeycloak = (keycloak: KeycloakService) => {
   return () =>
@@ -30,7 +32,12 @@ const initializeKeycloak = (keycloak: KeycloakService) => {
 };
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    WelcomeComponent,
+    DashboardComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
